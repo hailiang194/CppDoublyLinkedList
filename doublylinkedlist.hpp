@@ -64,6 +64,12 @@ public:
 	//access the value at the specific position pos from head when list is const
 	const int& operator[](std::size_t pos) const;
 
+	//get sub list from position begin to position i from head
+	DoublyLinkedList subList(std::size_t begin, std::size_t end) const;
+
+	//get sub list from postion begin to the end of list from head
+	DoublyLinkedList subList(std::size_t begin) const;
+
 protected:
 	Node* m_head;
 	Node* m_tail;

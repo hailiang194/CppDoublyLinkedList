@@ -87,6 +87,7 @@ void DoublyLinkedList::push_tail(const int& value)
 		m_head = node;
 		m_tail = node;
 		m_size++;
+		return;
 	}
 
 	node -> setPrev(m_tail);
@@ -268,3 +269,23 @@ bool DoublyLinkedList::_isOutOfRange(std::size_t pos) const
 {
 	return (pos >= m_size || pos < 0);
 }
+
+DoublyLinkedList DoublyLinkedList::subList(std::size_t begin, std::size_t last) const
+{
+	if(begin > last)
+		throw std::out_of_range("can\'t get the sub list because position begin is behind position last");
+
+	DoublyLinkedList sub;
+
+	for(std::size_t i = begin; i <= last; i++)
+		sub.push_tail(at(i));
+
+	return sub;
+
+}
+
+DoublyLinkedList DoublyLinkedList::subList(std::size_t begin) const
+{
+	return subList(begin, m_size - 1);
+}
+
